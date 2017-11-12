@@ -1,0 +1,35 @@
+#! /bin/bash 
+
+missing=()
+
+function check_version {
+  dep=$1
+
+  echo -ne "\t${dep}\t: "
+  if command -v ${dep} >/dev/null 2>&1; then
+    echo "Found."
+  else
+    echo "Not Found."
+    missing[${#missing[@]}]=${dep}
+  fi
+
+}
+
+depends=(git java apache2 php)
+
+function check_depends {
+  echo "Checking for dependancies :"
+  for prog in ${depends[@]}; do
+    check_version ${prog}
+  done
+}
+
+check_depends
+
+if [ ${#missing[@]} -ne 0 ]; then
+  for error in ${missing[@]}; do
+    echo "Error : program ${error} is missing." >&2
+  done
+  exit 1
+fi
+
