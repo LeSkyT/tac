@@ -1,35 +1,47 @@
 #! /bin/bash 
 
+Server_root=${PWD}
+Server_name="tacminecraft.zapto.org"
+
+
 missing=()
+depends=(git java apache2 php mongod)
+echo "# Makefile.rules" > Makefile.rules
 
-function check_version {
-  dep=$1
-
-  echo -ne "\t${dep}\t: "
-  if command -v ${dep} >/dev/null 2>&1; then
-    echo "Found."
-  else
-    echo "Not Found."
-    missing[${#missing[@]}]=${dep}
-  fi
-
-}
-
-depends=(git java apache2 php)
 
 function check_depends {
-  echo "Checking for dependancies :"
+  echo "Checking for requirements :"
   for prog in ${depends[@]}; do
-    check_version ${prog}
+    echo -ne "\t${prog} : "
+    if command -v ${prog} >/dev/null 2>&1; then
+      echo "present."
+    else
+      echo "missing."
+      missing[${#missing[@]}]=${prog}
+    fi
+  done
+
+  echo "missing=${missing[@]}" >> Makefile.rules
+}
+
+function build_file {
+  template=$(cat "templates/$1")
+  dst="build/$1"
+
+  echo -e "\tGenerating \"${dst}\" from template : \"templates/$1\""
+  eval "echo \"${template}\"" > ${dst}
+}
+
+function config_files {
+  echo "Creating build files :"
+  [ ! -d "build" ] && mkdir build
+  
+  for template in `ls templates`; do
+    if [[ -f "templates/${template}" ]]; then
+      build_file ${template}
+    fi
   done
 }
 
 check_depends
-
-if [ ${#missing[@]} -ne 0 ]; then
-  for error in ${missing[@]}; do
-    echo "Error : program ${error} is missing." >&2
-  done
-  exit 1
-fi
-
+config_files

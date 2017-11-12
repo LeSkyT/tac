@@ -1,0 +1,8 @@
+# Vim files
+
+.*.swp
+*~
+
+# Generated files
+build
+Makefile.rules
