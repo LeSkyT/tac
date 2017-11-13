@@ -1,0 +1,12 @@
+#! /bin/sh 
+
+folder="/home/a-ct/.minecraft"
+cd ${folder}
+
+memory="5G"
+
+log_file="${folder}/log.txt"
+pid_file="${folder}/pid.txt"
+jar_file="forge-1.7.10-10.13.4.1614-1.7.10-universal.jar"
+cmd="java -Xms${memory} -Xmx${memory} -jar ${jar_file} nogui"
+
