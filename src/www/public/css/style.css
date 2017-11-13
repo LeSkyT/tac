@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "Minecraft Title";
+  src: url('/fonts/Minecrafter.Reg.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Minecraft";
+  src: url('/fonts/Minecraft.ttf') format('truetype');
+}
+
+
+html, body, #body-content {
+  height: 100%; 
+}
+
+#Site-Name {
+  font-family: "Minecraft Title";
+  color: #000000;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
+  background: repeat top /64px url("/img/textures/stone.png");
+}
+
+#body-content {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+#body-content>div {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+.module {
+  border-radius: .25rem!important;
+  border: solid 1px #000000;
+  background-color: #868e96!important;
+  margin-top: 5px!important;
+  margin-bottom: 5px!important;
+}
+
+.module-slider {
+	border-top-right-radius: .25rem;
+	border-bottom-right-radius: .25rem;
+  border-top: solid 1px #000000;
+  border-bottom: solid 1px #000000;
+  border-right: solid 1px #000000;
+  padding: 5px 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(50, 50, 50, 0.9);
+
+  z-index: 1000;
+}
+
+#listplayer .table-title {
+  font-weight: bold;
+}
+
+#listplayer #numplayers {
+  color: DarkGreen;
+}
+
+#listplayer .scroll-y {
+  height: 200px;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.player-name {
+  font-family: "Minecraft";
+  padding-left: 10px;
+}
+
+
+#PlayerList>h3>span {
+  font-size: 0.5em;
+}
+

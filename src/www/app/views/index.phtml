@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TAC Minecraft Server</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="/css/jquery-ui.min.css">
+<link rel="stylesheet" href="/css/jquery-ui.structure.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+		integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+		crossorigin="anonymous"></script>
+
+	<script src="/js/jquery.rotate.js"></script>
+
+	<script src="/js/functions.js"></script>
+
+	<nav
+		class="navbar container-fluid fixed-top navbar-expand-xl navbar-dark bg-dark">
+		<a class="navbar-brand" id="Site-Name" href="#">Tac Server</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Home <span
+						class="sr-only">(current)</span></a></li>
+			</ul>
+
+			<div class="dropdown">
+				<?php if($this->session->has('user')): ?>
+				<button type="button"
+					class="nav-item dropdown-toggle btn btn-warning" id="logindropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"><?php echo $this->session->get('user')->fullName; ?></button>
+
+				<div class="dropdown-menu" aria-labelledby="logindropdown">
+					<div class="dropdown-divider">or</div>
+					<a class="dropdown-item" href="/user/logout">logout</a>
+				</div>
+				
+				<?php else: ?>
+	  		<button type="button"
+					class="nav-item dropdown-toggle btn btn-warning" id="logindropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Guest User</button>
+
+				<div class="dropdown-menu" aria-labelledby="logindropdown">
+					<a class="dropdown-item" href="/user/login">Login</a>
+					<div class="dropdown-divider">or</div>
+					<a class="dropdown-item" href="/user/register">Register</a>
+				</div>
+				<?php endif; ?>
+    
+      </div>
+		</div>
+	</nav>
+
+	<div class="container" id="body-content">
+		<div class="container rounded h-100">
+			<?php echo $this->getContent(); ?>
+    </div>
+	</div>
+
+	<div class="navbar bg-dark fixed-bottom container-fluid">&copy;
+		Thibault LESCAIL</div>
+</body>
+</html>
